@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, intial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <link rel="icon" type="image/jpeg" href="images/favicon.jpeg">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="bootstrap-social/bootstrap-social.css">
+
+    <title>Fastlane - DataBase</title>
+</head>
+
+<body>
+    
+
+
+    <script>
+        var data_list = new Array();
+
+        function delete_data() {
+            localStorage.clear();
+        }
+
+
+        function get_data() {
+            var str = localStorage.getItem("db");
+            if(str != null)
+                data_list = JSON.parse(str);
+        }
+
+        function add_data() {
+            
+            get_data();
+
+            data_list.push({
+                eid:document.getElementById("e-id").value,
+                ename:document.getElementById("e-name").value,
+                eemail:document.getElementById("e-email").value,
+                etel:document.getElementById("e-tel").value,
+                esal:document.getElementById("e-sal").value,
+                eloc:document.getElementById("e-loc").value
+            });
+
+            localStorage.setItem("db", JSON.stringify(data_list));
+            show_data();
+        }
+
+        function show_data() {
+            get_data();
+            var table = document.getElementById("e-data");
+            
+            var n = table.rows.length;
+
+            if(n>0)
+                while(--n) 
+                    table.deleteRows(x);
+
+            for(let i=0; i<data_list.length; i++) {
+                var r = table.insertRow();
+
+                r.insertCell().innerHTML = data_list[i].eid;
+                r.insertCell().innerHTML = data_list[i].ename;
+                r.insertCell().innerHTML = data_list[i].eemail;
+                r.insertCell().innerHTML = data_list[i].etel;
+                r.insertCell().innerHTML = data_list[i].esal;
+                r.insertCell().innerHTML = data_list[i].eloc;
+
+                if(i%2!=0)
+                    r.style.background = "white";
+                else
+                    r.style.background = "lightgrey";
+            } 
+        }
+    </script>
+
+
+
+
+    <nav class="navbar navbar-expand-sm navbar-dark">
+        <div class="container">
+            <a href="#" class="navbar-brand mr-auto text-white"><img src="images/logo.jpeg">Fastlane</a>
+            <button class="navbar-toggler ml-auto" data-target="#nav-bar" data-toggle="collapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="nav-bar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a href="index.html" class="nav-link"><i class="mr-2 fa fa-home fa-lg"></i> Home</a></li>
+                    <li class="nav-item"><a href="" class="nav-link active"><i class="mr-2 fa fa-database fa-lg"></i> Data</a></li>
+                    <li class="nav-item"><a href="aboutus.html" class="nav-link"><i class="mr-2 fa fa-info fa-lg"></i> About Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mb20">
+        <div class="container">
+            <div class="row row-content">
+                <a role="button" id="upload-data" class="btn btn-outline-primary ml-auto gap" data-target="#upload-modal" data-toggle="modal">
+                    Upload Data
+                </a>
+                <a role="button" id="delete-data" class="btn btn-outline-danger ml-2 gap" data-target="#delete-modal" data-toggle="modal">
+                    Delete all Data
+                </a>
+                <div id="delete-modal" class="modal fade" role="dialog">
+                    <div class="modal-dialog modal-lg" role="content">
+                        <div class="modal-content">
+                            <div class="modal-header justify-content-center">
+                                <h4>Are you sure?</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row justify-content-center">
+                                    <button class=" btn btn-danger btn-lg" onclick="delete_data()" data-dismiss="modal">
+                                        Yes
+                                    </button>
+                                    <button class="ml-3 btn btn-primary btn-lg" data-dismiss="modal">
+                                        No
+                                    </button>
+                                </div>
+                                <div class="row mt-3 justify-content-center">
+                                    <p><i>Refresh the page to see the change.</i></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="upload-modal" class="modal fade" role="dialog">
+                    <div class="modal-dialog modal-lg" role="content">
+                        <div class="modal-content">
+                            <div id="bg-col" class="modal-header">
+                                <h4 class="modal-title">Enter Employe Data</h4>
+                                <button class="close" data-dismiss="modal">
+                                    &times;
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="#" id="data-form" onsubmit="add_data(); return false">
+                                    <div class="form-group row">
+                                        <label for="e-id" class="col-12 col-sm-2 col-form-label">Id</label>
+                                        <div class="col-sm-10">
+                                            <input class="col-sm-10 col-form-input form-control" type="text" required name="id" id="e-id" placeholder="Id">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="e-name" class="col-12 col-sm-2">Name</label>
+                                        <div class="col-sm-10">
+                                            <input class="col-sm-10 col-form-input form-control" type="text" required id="e-name" name="Name" placeholder="Name">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="e-email" class="col-12 col-sm-2">E-Mail Id</label>
+                                        <div class="col-sm-10">
+                                            <input class="col-sm-10 col-form-input form-control" type="email" required id="e-email" name="Email-Id" placeholder="name@example.com">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="e-tel" class="col-12 col-sm-2">Phone Number</label>
+                                        <div class="col-sm-10">
+                                            <input class="col-sm-10 col-form-input form-control" type="text" required id="e-tel" name="Phone" placeholder="With Country Code">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="e-sal" class="col-12 col-sm-2">Salary</label>
+                                        <div class="col-sm-10">
+                                            <input class="col-sm-10 col-form-input form-control" type="text" required id="e-sal" name="Salary" placeholder="$">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="e-loc" class="col-12 col-sm-2">Location</label>
+                                        <div class="col-sm-10">
+                                            <input class="col-sm-10 col-form-input form-control" type="text" required id="e-loc" name="Location" placeholder="City">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row justify-content-center">
+                                        <button id="submit-button" type="submit" class="btn btn-lg btn-info">
+                                            Submit
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table id="e-data" class="table table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Email-Id</th>
+                                <th>Phone Number</th>
+                                <th>Salary</th>
+                                <th>Location</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        show_data();
+    </script>
+
+    <div style="display: inline;" id="print">
+
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-4 col-sm-2 offset-1">
+                    <h5>Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="">Home</a></li>
+                        <li><a href="">Data</a></li>
+                        <li><a href="">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-7 col-sm-5">
+                    <h5></h5>
+                </div>
+                <div class="col-12 col-sm-4 align-items-center mt-3 mb-3">
+                    <div class="text-center">
+                        <h5>Follow us at:</h5>
+                        <br>
+                        <a target="_blank" href="https://www.facebook.com/anoop.allumwar" class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook fa-lg"></i></a>
+                        <a target="_blank" href="https://twitter.com/abhichowdary06" class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter fa-lg"></i></a>
+                        <a target="_blank" href="https://www.linkedin.com/in/tarun-alfie-503530120/" class="btn btn-social-icon btn-linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+                        <a target="_blank" href="https://www.instagram.com/abi8186_/" class="btn btn-social-icon btn-instagram"><i class="fa fa-instagram fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <h6>&copy; Fastlane</h6>
+            </div>
+        </div>
+    </footer>
+
+    <script src="jquery/dist/jquery.slim.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
