@@ -97,24 +97,26 @@ nav .container {
     font-size: 120% !important;
 }
 
-.carousel {
-    background-color: rgb(247, 222, 171);
+.carousel-indicators li {
+    background-color: lightgrey !important;
+    height: 7px;
 }
 
-.carousel-item {
-    height: 300px;
+.carousel-indicators li.active {
+    background-color: black !important;
 }
 
-.carousel-item img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 300px;
+.card-body img {
     width: 300px;
+    height: 300px;
+}
+
+dt {
+    font-size: 250%;
 }
 
 .carousel-control-prev, .carousel-control-next {
-    height: 270px;
+    z-index: 0;
 }
 
 .carousel-caption {
@@ -125,6 +127,7 @@ nav .container {
     position: absolute;
     right: 0;
     bottom: 0;
+    z-index: 1;
 }
 
 .jumbotron {
@@ -161,9 +164,6 @@ nav .container {
 }
 
 @media (max-width:575px) {
-    .carousel-item {
-        height: 350px;
-    }
     .carousel-item img {
         position: relative;
         height: 250px;
@@ -177,6 +177,9 @@ nav .container {
     .data {
         height: 10px;
     }
+    dt {
+        font-size: 150%;
+    }
 }
 
 @media (max-width: 767px) {
@@ -185,6 +188,9 @@ nav .container {
     }
     .navbar-nav {
         font-size: 86% !important;
+    }
+    .card img {
+        font-size: 150%;
     }
 }
 
