@@ -62,7 +62,7 @@ body {
 }
 
 .nav-link:hover {
-    color: grey !important;
+    color: rgb(77, 77, 77) !important;
     margin-right: 3px;
     margin-left: 3px;
 }
@@ -72,13 +72,14 @@ body {
     height: 48px;
     border-radius: 50%;
     margin-right: 10px;
+    margin-bottom: 8px;
 }
 
 .footer {
     background-color: rgb(245, 236, 187);
-    margin: 0px auto;
+    margin-top: auto;
     padding: 20px 0px 0px 0px;
-    position: fixed;
+    /* position: absolute; */
     left: 0;
     bottom: 0;
     width: 100%;
@@ -97,7 +98,7 @@ nav .container {
 }
 
 .carousel {
-    background-color: rgb(243, 221, 178);
+    background-color: rgb(247, 222, 171);
 }
 
 .carousel-item {
@@ -124,4 +125,71 @@ nav .container {
     position: absolute;
     right: 0;
     bottom: 0;
+}
+
+.jumbotron {
+    height: 150px;
+}
+
+.jumbotron  div  div {
+    font-size: 1.5em;
+}
+
+.th {
+    font-size: 2.5em;
+}
+
+
+.table-height {
+    height: 365px !important;
+}
+
+.bdy {
+    font-size: 1.4em;
+}
+
+.about-us {
+    height: 123px;
+}
+
+.index {
+    height: 60px;
+}
+
+.data {
+    height: 0px;
+}
+
+@media (max-width:575px) {
+    .carousel-item {
+        height: 350px;
+    }
+    .carousel-item img {
+        position: relative;
+        height: 250px;
+    }
+    .about-us {
+        height: 2px;
+    }
+    .index {
+        height: 2px;
+    }
+    .data {
+        height: 10px;
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar-brand {
+        font-size: 130%;
+    }
+    .navbar-nav {
+        font-size: 86% !important;
+    }
+}
+
+@media (max-width:991px) and (min-width:768px) {
+    .navbar-brand {
+        font-size: 160%;
+    }
 }
