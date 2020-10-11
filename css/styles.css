@@ -123,6 +123,11 @@ dt {
     color: black;
 }
 
+footer:last-child {
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
+} 
+
 #dps-button {
     position: absolute;
     right: 0;
