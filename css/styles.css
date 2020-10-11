@@ -160,6 +160,7 @@ footer:last-child {
     .carousel-item img {
         position: relative;
         height: 250px;
+        width: 250px;
     }
     dt {
         font-size: 150%;
