@@ -55,3 +55,8 @@ function show_data() {
             r.style.background = "lightgrey";
     } 
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelector("#data-form").addEventListener("submit", add_data);
+    show_data();
+});
