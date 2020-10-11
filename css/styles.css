@@ -144,38 +144,17 @@ dt {
 
 
 .table-height {
-    height: 365px !important;
+    height: 300px !important;
 }
 
 .bdy {
     font-size: 1.4em;
 }
 
-.about-us {
-    height: 123px;
-}
-
-.index {
-    height: 60px;
-}
-
-.data {
-    height: 0px;
-}
-
 @media (max-width:575px) {
     .carousel-item img {
         position: relative;
         height: 250px;
-    }
-    .about-us {
-        height: 2px;
-    }
-    .index {
-        height: 2px;
-    }
-    .data {
-        height: 10px;
     }
     dt {
         font-size: 150%;
